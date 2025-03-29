@@ -10,8 +10,8 @@ import java.util.*;
 public class TestArrayList {
        public static void main(String[] args) { 
         //List <Integer> listaNums = new ArrayList <Integer>();
+        List <Integer> listaNums = new LinkedList <Integer>();
         
-           List <Integer> listaNums = new LinkedList <Integer>();
         for(int i =0; i < args.length; i++)
             listaNums.add(Integer.parseInt(args[i]));
         System.out.println("Elementos insertados: " + listaNums.size());  
@@ -31,6 +31,8 @@ public class TestArrayList {
         for(int i=0; i < listaNums.size(); i++)
             System.out.println("Num=" + listaNums.get(i));
         
+        //LAS DE ARRIBA SON LAS FORMAS DE IMPRIMIR UNA LISTA
+        
         //INCISO D
         List <Estudiante> listaEsts = new LinkedList <Estudiante>();
         Estudiante e1 = new Estudiante("Prueba", "Prueba", "pruebamail", "Facultad de Informatica");
@@ -48,15 +50,14 @@ public class TestArrayList {
         System.out.println(listaEstsCopiados);
         
         System.out.println("======================");
-        
-   //   e1.setNombre("Matute"); Se modifica en todas las listas, porque se copian las direcciones a los objetos y lo que se modifico fue el objeto
-        listaEsts.set(0, new Estudiante("Prueba", "Prueba", "pruebamail", "Facultad de Informatica"));
+       
+        listaEsts.set(0, new Estudiante("Pru", "Pru", "pruemail", "Facultad de Informatica"));
         System.out.print("Estudiantes: ");
         for(Estudiante est: listaEsts)
-            System.out.println(est.toString()); //En este caso este cambio solo se ve en esta lista y no en la copiada, porque se cambio la referencia al objeto Estudiante
+            System.out.println(est.toString()); 
         System.out.print("Estudiantes copiados: ");
         System.out.println(listaEstsCopiados);
-        
+        //En este caso este cambio solo se ve en esta lista y no en la copiada, porque se cambio la referencia al objeto Estudiante
         System.out.println("======================");
         
         //Otra forma de copiar una lista es con el metodo addAll(): Crear un nuevo LinkedList y agregar todos los elementos del original usando este metodo
@@ -68,8 +69,8 @@ public class TestArrayList {
         System.out.println("======================");
         
         //INCISO E
-        Estudiante e4 = new Estudiante("Prueba", "Prueba", "pruebamail", "Facultad de Informatica");
-        if(!listaEsts.contains(e4)) {
+        Estudiante e4 = new Estudiante("Prueb", "Prueba", "pruebamail", "Facultad de Informatica");
+        if(!listaEsts.contains(e4)) {//SE AGREGA EVALUANDO CON EXACTITUD LAS SIMILITUDES
             listaEsts.add(e4);
             System.out.println("Se agrego al alumno correctamente");
         } else {
