@@ -1,0 +1,38 @@
+package EJER4;
+
+import java.util.*;
+import EJER1y2.BinaryTree;
+
+public class RedBinariaLlena {
+    private BinaryTree<Integer> red;
+    
+    public RedBinariaLlena(BinaryTree<Integer> unArbolLleno) {
+        this.red = unArbolLleno;
+    }
+    
+    public int retardoReenvio() {//Si red no está vacía, entonces llama al método retardoReenvio(red) y devuelve ese valor.
+    	return (!red.isEmpty()) ? retardoReenvio(red) : 0;//Si sí está vacía, entonces devuelve 0.
+    }
+    
+    private int retardoReenvio(BinaryTree<Integer> red) {
+        int retHI = 0;
+        int retHD = 0;
+        if(red.hasLeftChild())
+            retHI = retardoReenvio(red.getLeftChild());
+        if(red.hasRightChild())
+            retHD = retardoReenvio(red.getRightChild());
+        return (Math.max(retHI, retHD)+ red.getData());//Esa línea elige el mayor de los dos retardos que vienen de los hijos
+    }
+    
+    public static void main (String[] args) {
+    	System.out.println("Test mayor retardo");
+    	BinaryTree<Integer> ab = new BinaryTree<Integer>(4);
+    	ab.addLeftChild(new BinaryTree<Integer>(8));
+    	ab.addRightChild(new BinaryTree<Integer>(9));
+    	ab.getLeftChild().addLeftChild(new BinaryTree<Integer>(10));
+    	ab.getRightChild().addRightChild(new BinaryTree<Integer>(10));
+    	
+    	RedBinariaLlena red = new RedBinariaLlena(ab);
+    	System.out.println("El mayor retardo posible es de: " + red.retardoReenvio() + " segundos");
+    }
+}

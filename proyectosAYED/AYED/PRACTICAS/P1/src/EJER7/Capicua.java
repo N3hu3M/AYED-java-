@@ -34,6 +34,7 @@ public class Capicua {
             return esCapicua(lista, 0, lista.size()-1);
         return true;
     }
+    
     private boolean esCapicua(ArrayList<Integer> lista, int pri, int ult) {
         boolean es = true;
         if (pri < ult) 
